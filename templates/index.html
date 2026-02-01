@@ -1,0 +1,30 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>CrewAI Support Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Support Reply Workflow</h1>
+
+        <form method="POST">
+            <label for="message">Customer Message</label>
+            <textarea id="message" name="message" rows="8" required>{{ message }}</textarea>
+            <button type="submit">Classify severity, Include key details, and Decide next action</button>
+        </form>
+
+        {% if response %}
+        <div class="output">
+            <p>Planner Agent Output: {{ planner_result }} seconds</p>
+            <p>Response time: {{ latency }} seconds</p>
+            <h2>AI Response</h2>
+            <pre>{{ response }}</pre>
+            
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
